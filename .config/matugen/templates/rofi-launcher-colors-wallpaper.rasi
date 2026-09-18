@@ -1,0 +1,13 @@
+/**
+ *
+ * Colors — generado por matugen a partir del wallpaper del sistema
+ **/
+* {
+    background:     {{colors.background.default.hex}}FF;
+    background-alt: {{colors.surface_container.default.hex}}FF;
+    foreground:     {{colors.on_background.default.hex}}FF;
+    selected:       {{colors.primary.default.hex}}FF;
+    active:         {{colors.primary_container.default.hex}}FF;
+    urgent:         {{colors.error.default.hex}}FF;
+    selectedtext:  #000000FF;
+}

@@ -1,0 +1,5 @@
+[config]
+
+[templates.foot]
+input_path = '~/.config/matugen/templates/foot.ini'
+output_path = '~/.config/foot/colors-dark.ini'

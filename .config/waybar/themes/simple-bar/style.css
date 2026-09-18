@@ -1,0 +1,63 @@
+@import url("colors.css");
+@import url("font.css");
+
+* {
+  border: none;
+  border-radius: 0;
+  font-size: 12px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @background;
+  color: @foreground;
+  border-bottom: 1px solid alpha(@foreground, 0.15);
+}
+
+#workspaces,
+#clock,
+#cpu,
+#custom-wifi,
+#pulseaudio,
+#battery,
+#tray,
+#custom-power,
+#group-system {
+  background: transparent;
+  padding: 0 6px;
+  margin: 0;
+}
+
+#workspaces button {
+  background: transparent;
+  color: alpha(@foreground, 0.4);
+  padding: 0 6px;
+  margin: 0;
+  border-radius: 0;
+  transition: color 0.15s ease;
+}
+
+#workspaces button:hover {
+  color: alpha(@foreground, 0.8);
+}
+
+#workspaces button.active {
+  color: @foreground;
+  font-weight: bold;
+}
+
+#workspaces button.urgent {
+  color: @urgent;
+  font-weight: bold;
+}
+
+#battery.warning  { color: @urgent; }
+#battery.critical { color: @urgent; font-weight: bold; }
+#battery.charging { color: @active; }
+#pulseaudio.muted { color: alpha(@foreground, 0.4); }
+
+#custom-power {
+  color: @urgent;
+  padding: 0 10px;
+}
+

@@ -1,0 +1,13 @@
+/**
+ *
+ * Colors — generado por matugen a partir del wallpaper del sistema
+ **/
+* {
+    background:     #0e141cFF;
+    background-alt: #242a33FF;
+    foreground:     #dde3eeFF;
+    selected:       #98accdFF;
+    active:         #3b9effFF;
+    urgent:         #ffd7d2FF;
+    selectedtext:  #000000FF;
+}

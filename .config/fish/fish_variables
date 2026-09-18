@@ -1,0 +1,6 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR __fish_initialized:4300
+SETUVAR fish_color_autosuggestion:6c7086
+SETUVAR fish_greeting:
+SETUVAR fish_user_paths:/home/miguel/\x2elocal/bin

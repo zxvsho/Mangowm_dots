@@ -1,0 +1,30 @@
+shell = "sh -c '{}'"
+
+# === ITEM EXISTENTE ===
+[[items]]
+name = "tinted-shell"
+path = "https://github.com/tinted-theming/tinted-shell"
+hook = ". %f"
+supported-systems = ["base16"]
+themes-dir = "scripts"
+
+# === FOOT ===
+[[items]]
+name = "foot"
+template = "~/.config/tinty/templates/foot.ini.mustache"
+output = "~/.config/foot/colors-dark.ini"
+supported-systems = ["base16", "base24"]
+
+# === GHOSTTY ===
+[[items]]
+name = "ghostty"
+template = "~/.config/tinty/templates/ghostty.mustache"
+output = "~/.config/ghostty/themes/tema_matugen"
+supported-systems = ["base16", "base24"]
+
+# === ROFI BASE ===
+[[items]]
+name = "rofi-base"
+template = "~/.config/tinty/templates/rofi-base.rasi.mustache"
+output = "~/.config/rofi/colors/matugen-wallpaper.rasi"
+supported-systems = ["base16", "base24"]

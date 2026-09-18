@@ -1,0 +1,5 @@
+[general]
+import = ["~/.config/alacritty/colors.toml"]
+
+[font]
+  normal.family = "JetBrainsMono Nerd Font"

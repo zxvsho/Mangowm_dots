@@ -1,0 +1,27 @@
+# Mako config — minimalista, colores desde theme-engine
+
+font=MesloLGS Nerd Font Propo 10
+width=340
+outer-margin=10
+margin=10
+padding=12
+border-size=1
+border-radius=6
+
+default-timeout=3000
+ignore-timeout=0
+
+max-visible=3
+sort=-time
+
+icons=0
+markup=1
+
+background-color=#0e141cE6
+text-color=#dde3ee
+border-color=#98accd
+progress-color=over #98accd
+
+[urgency=critical]
+border-color=#ffd7d2
+default-timeout=0

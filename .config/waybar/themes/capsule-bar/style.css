@@ -1,0 +1,85 @@
+@import url("colors.css");
+@import url("font.css");
+
+* {
+  border: none;
+  border-radius: 0;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: @background;
+  border-radius: 0;
+  color: @foreground;
+}
+
+#workspaces,
+#clock,
+#cpu,
+#network,
+#bluetooth,
+#pulseaudio,
+#backlight,
+#battery,
+#tray,
+#custom-power {
+  background: alpha(@foreground, 0.08);
+  border-radius: 8px;
+  margin: 6px 4px;
+  padding: 0 12px;
+  transition: all 0.2s ease;
+}
+
+#workspaces:hover,
+#clock:hover,
+#cpu:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#backlight:hover,
+#battery:hover,
+#tray:hover,
+#custom-power:hover {
+  background: alpha(@foreground, 0.14);
+}
+
+#workspaces button {
+  background: transparent;
+  color: alpha(@foreground, 0.5);
+  padding: 0 6px;
+  margin: 0 1px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+#workspaces button:hover {
+  background: alpha(@foreground, 0.12);
+  color: @foreground;
+}
+
+#workspaces button.active {
+  background: alpha(@selected, 0.4);
+  color: @foreground;
+  font-weight: bold;
+}
+
+#workspaces button.urgent {
+  background: @urgent;
+  color: @background;
+}
+
+#battery.warning  { color: @urgent; }
+#battery.critical { color: @urgent; }
+#battery.charging { color: @active; }
+#network.disconnected { color: @urgent; }
+#pulseaudio.muted { color: alpha(@foreground, 0.4); }
+
+#custom-power {
+  color: @urgent;
+  padding: 0 14px;
+}
+
+#custom-power:hover {
+  background: alpha(@urgent, 0.2);
+}

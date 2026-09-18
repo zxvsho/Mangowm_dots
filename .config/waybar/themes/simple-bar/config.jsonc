@@ -1,0 +1,105 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 22,
+  "spacing": 10,
+
+  "modules-left": ["ext/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "group/system",
+    "custom/wifi",
+    "pulseaudio",
+    "cpu",
+    "battery",
+    "custom/power"
+  ],
+
+  "ext/workspaces": {
+    "format": "{icon}",
+    "ignore-hidden": true,
+    "on-click": "mmsg dispatch workspace {index}",
+    "on-click-right": "mmsg dispatch workspace {index}",
+    "on-scroll-up": "mmsg dispatch workspace +1",
+    "on-scroll-down": "mmsg dispatch workspace -1"
+  },
+
+"clock": {
+  "format": "{:%A %I:%M %p}",
+  "format-alt": "{:%d %B %Y}",
+  "tooltip-format": "{calendar}",
+  "locale": "es_CO.UTF-8",
+  "calendar": {
+    "mode": "month",
+    "mode-monitor": "month-year"
+  },
+  "on-click-right": "foot --app-id=foot-peaclock -e peaclock"
+},
+
+  "group/system": {
+    "orientation": "inherit",
+    "spacing": 10,
+    "drawer": {
+      "transition-duration": 500,
+      "transition-left-to-right": false,
+      "children-class": "drawer-child"
+    },
+    "modules": ["custom/arrow", "tray", "bluetooth", "backlight"]
+  },
+
+  "custom/arrow": {
+    "format": "&lt;",
+    "tooltip": false
+  },
+
+  "tray": {
+    "spacing": 8,
+    "icon-size": 14
+  },
+
+  "bluetooth": {
+    "format": "󰂯",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "tooltip-format": "{controller_alias}",
+    "on-click": "foot --app-id=foot-bluetui -e bluetui"
+  },
+
+  "backlight": {
+    "format": "{icon}",
+    "format-icons": ["󰃞", "󰃟", "󰃠"]
+  },
+
+  "custom/wifi": {
+    "exec": "~/.config/waybar/themes/simple-bar/scripts/wifi.sh",
+    "interval": 5,
+    "format": "{}",
+    "on-click": "foot --app-id=foot-impala -e impala",
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰝟",
+    "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+    "on-click": "foot --app-id=foot-wiremix -e wiremix"
+  },
+
+  "cpu": {
+    "format": "󰻠",
+    "interval": 2,
+    "on-click": "foot --app-id=foot-btop -e btop"
+  },
+
+  "battery": {
+    "format": "{icon}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+    "states": { "warning": 20, "critical": 10 }
+  },
+
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "wlogout",
+    "tooltip": false
+  }
+}

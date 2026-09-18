@@ -1,0 +1,170 @@
+/**
+ * rofi-menu.rasi
+ * Tema dedicado al menú jerárquico único (Menu > Style > Engine, etc.)
+ * Lista vertical simple, una sola columna, sin iconos, con breadcrumb
+ * en el prompt. Importa directo el theme-engine central (no shared/colors.rasi
+ * legacy) para mantenerse sincronizado con matugen/tinty igual que el
+ * resto del rice.
+ */
+
+@import "~/.config/theme-engine/colors.rasi"
+@import "~/.config/rofi/font.rasi"
+
+configuration {
+    modi:                "menu:~/.dots/scripts/rofi-menu.sh";
+    show-icons:          false;
+
+    /* Navegación estilo Vim/Neovim con Control. Control+h/j/k/l vienen
+       TODAS preasignadas por defecto a otra cosa en rofi:
+         Control+h = kb-remove-char-back (borrar, como Backspace)
+         Control+j = kb-accept-entry     (ya incluido nativamente)
+         Control+k = kb-remove-to-eol    (borrar hasta el final)
+         Control+l = kb-mode-complete    (autocompletar modo)
+       Rofi no permite dos acciones en la misma tecla, así que hay que
+       vaciar esos 4 defaults antes de reasignarlos — mismo patrón que
+       tuvimos que aplicar con Shift+Right/Left y kb-mode-next/previous.
+
+       Control+j / Control+k mueven la selección en la lista
+       (kb-row-down / kb-row-up), además de Arriba/Abajo nativos.
+       Control+h retrocede un nivel (kb-custom-1, manejado en
+       rofi-menu.sh, requiere \0use-hot-keys\x1ftrue en el script).
+       Control+l entra/confirma la fila seleccionada, igual que Enter
+       (kb-accept-entry). Esc cierra el menú por completo (kb-cancel). */
+    kb-remove-char-back: "BackSpace,Shift+BackSpace";
+    kb-remove-to-eol:    "";
+    kb-mode-complete:    "";
+
+    kb-row-down:          "Down,Control+j";
+    kb-row-up:            "Up,Control+k";
+
+    kb-custom-1:          "Control+h";
+    kb-accept-entry:      "Return,KP_Enter,Control+l";
+    kb-cancel:            "Escape";
+}
+
+* {
+    background-colour: var(background);
+    foreground-colour: var(foreground);
+    alt-background:    var(background-alt);
+    selected-bg:        var(selected);
+    selected-text:      var(selectedtext);
+    active-colour:      var(active);
+    urgent-colour:      var(urgent);
+}
+
+window {
+    transparency:       "real";
+    location:            center;
+    anchor:              center;
+    fullscreen:          false;
+    width:               320px;
+    x-offset:            0px;
+    y-offset:            0px;
+
+    enabled:             true;
+    margin:              0px;
+    padding:             0px;
+    border:              1px solid;
+    border-radius:       0px;
+    border-color:        @selected-bg;
+    background-color:    @background-colour;
+    cursor:              "default";
+}
+
+mainbox {
+    enabled:             true;
+    spacing:             0px;
+    margin:              0px;
+    padding:             0px;
+    border:              0px solid;
+    background-color:    transparent;
+    children:            [ "inputbar", "listview" ];
+}
+
+/* "prompt" = nombre del nivel (Search / Style / Engine / ...) en la
+   MISMA línea que "entry", a su izquierda. El script (rofi-menu.sh)
+   manda \0prompt con el nombre de cada nivel vía emitir_prompt(). Se
+   descartó antes el placeholder fijo por decisión de volver a este
+   comportamiento: título visible siempre, sin desaparecer al escribir
+   (rofi no permite combinar ambas cosas en un solo campo). */
+inputbar {
+    enabled:             true;
+    orientation:         horizontal;
+    spacing:             8px;
+    margin:              0px;
+    padding:             14px 20px;
+    border:              0px 0px 1px solid;
+    border-color:        @alt-background;
+    background-color:    @background-colour;
+    text-color:          @foreground-colour;
+    children:            [ "prompt", "entry" ];
+}
+
+prompt {
+    enabled:             true;
+    background-color:    inherit;
+    text-color:          @foreground-colour;
+    border-radius:       0px;
+    padding:             0px;
+    vertical-align:      0.5;
+    font:                "JetBrainsMono Nerd Font 13";
+}
+
+entry {
+    enabled:             true;
+    background-color:    inherit;
+    text-color:          @foreground-colour;
+    cursor:              text;
+    placeholder:         "";
+    placeholder-color:   @foreground-colour;
+    font:                "JetBrainsMono Nerd Font 13";
+}
+
+listview {
+    enabled:             true;
+    columns:             1;
+    lines:               9;
+    cycle:               true;
+    dynamic:             true;
+    scrollbar:           false;
+    layout:              vertical;
+    reverse:             false;
+    fixed-height:        false;
+
+    spacing:             2px;
+    margin:              0px;
+    padding:             10px 14px 16px 14px;
+    border:              0px solid;
+    background-color:    transparent;
+    text-color:          @foreground-colour;
+    cursor:              "default";
+}
+
+element {
+    enabled:             true;
+    spacing:             10px;
+    margin:              0px;
+    padding:             10px 12px;
+    border:              0px solid;
+    border-radius:       0px;
+    background-color:    transparent;
+    text-color:          @foreground-colour;
+    cursor:              pointer;
+}
+element normal.normal {
+    background-color:    transparent;
+    text-color:          @foreground-colour;
+}
+element selected.normal {
+    background-color:    @selected-bg;
+    text-color:          @selected-text;
+}
+element-text {
+    background-color:    transparent;
+    text-color:          inherit;
+    highlight:           inherit;
+    cursor:              inherit;
+    vertical-align:      0.5;
+    horizontal-align:    0.0;
+    font:                "JetBrainsMono Nerd Font 12";
+}

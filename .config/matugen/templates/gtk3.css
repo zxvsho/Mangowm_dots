@@ -1,0 +1,9 @@
+@define-color theme_bg_color {{colors.background.default.hex}};
+@define-color theme_fg_color {{colors.on_background.default.hex}};
+@define-color theme_base_color {{colors.surface_container.default.hex}};
+@define-color theme_text_color {{colors.on_background.default.hex}};
+@define-color theme_selected_bg_color {{colors.primary.default.hex}};
+@define-color theme_selected_fg_color {{colors.on_primary.default.hex}};
+@define-color borders {{colors.outline.default.hex}};
+@define-color theme_unfocused_bg_color {{colors.background.default.hex}};
+@define-color theme_unfocused_fg_color {{colors.on_background.default.hex}};

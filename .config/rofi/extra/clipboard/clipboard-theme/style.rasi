@@ -1,0 +1,103 @@
+/* Clipboard Theme — integrado con theme-engine */
+@import "~/.config/theme-engine/colors.rasi"
+@import "~/.config/rofi/font.rasi"
+
+* {
+    background-color: transparent;
+    text-color: @foreground;
+}
+
+window {
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 1000px;
+    height: 600px;
+    background-color: @background;
+    border: 1px solid;
+    border-color: @selected;
+    border-radius: 8px;
+}
+
+mainbox {
+    orientation: horizontal;
+    padding: 16px;
+    spacing: 16px;
+    background-color: transparent;
+    children: [ "listview-box", "message" ];
+}
+
+listview-box {
+    orientation: vertical;
+    spacing: 8px;
+    children: [ "inputbar", "listview" ];
+}
+
+inputbar {
+    padding: 10px 12px;
+    background-color: @background-alt;
+    text-color: @foreground;
+    children: [ "prompt", "entry" ];
+}
+
+prompt {
+    background-color: inherit;
+    text-color: inherit;
+}
+entry {
+    background-color: inherit;
+    text-color: inherit;
+    placeholder: "Buscar en el historial...";
+    placeholder-color: inherit;
+}
+
+listview {
+    width: 480px;
+    lines: 12;
+    columns: 1;
+    fixed-height: true;
+    scrollbar: true;
+    spacing: 4px;
+    padding: 4px;
+    background-color: @background-alt;
+    cursor: "default";
+}
+
+scrollbar {
+    handle-color: @selected;
+    background-color: @background;
+    handle-width: 6px;
+}
+
+element {
+    padding: 8px 10px;
+    spacing: 10px;
+    background-color: transparent;
+    text-color: @foreground;
+    cursor: pointer;
+}
+element-icon {
+    size: 72px;
+    background-color: transparent;
+}
+element-text {
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+element selected.normal {
+    background-color: @selected;
+    text-color: @selectedtext;
+}
+
+message {
+    width: 460px;
+    padding: 16px;
+    background-color: @background-alt;
+    border: 0px;
+}
+textbox {
+    background-color: inherit;
+    text-color: @foreground;
+    vertical-align: 0.0;
+    horizontal-align: 0.0;
+}
